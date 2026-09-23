@@ -1,0 +1,31 @@
+# F.R.I.D.A.Y. — core dependencies (Python 3.10+)
+# Install:  pip install -r requirements.txt
+
+# --- UI ---
+PyQt6>=6.6
+
+# --- Brain (async OpenAI-compatible client: NVIDIA / OpenRouter / vLLM / Regolo ...) ---
+openai>=1.40
+requests>=2.31
+
+# --- Audio: wake word, speech-to-text, text-to-speech ---
+SpeechRecognition>=3.10
+sounddevice>=0.4.6       # mic + speaker I/O. Windows/macOS wheels bundle PortAudio; Linux: apt install libportaudio2
+pyttsx3>=2.90            # Linux also needs: apt install espeak-ng
+# Optional engines (offline wake word / STT, OCR) live in requirements-optional.txt so a missing wheel can never break the main install.
+
+# --- Vision ---
+# NOTE: opencv-contrib-python is a superset of opencv-python. It is required for cv2.face
+# (LBPH face recognition, used to tell *known* faces from *unknown* ones). Do NOT install both.
+opencv-contrib-python>=4.9
+numpy>=1.26
+pillow>=10.0
+mss>=9.0                 # fast multi-monitor screenshots
+
+# --- OS control / telemetry ---
+pyautogui>=0.9.54
+psutil>=5.9
+
+# --- Integrations ---
+twilio>=9.0              # WhatsApp alerts
+pure-python-adb          # Fire TV (ADB client; needs the `adb` binary from Android platform-tools)
